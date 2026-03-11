@@ -1,0 +1,96 @@
+---
+const currentYear = new Date().getFullYear();
+
+const footerLinks = {
+  product: [
+    { label: 'Features', href: '/#features' },
+    { label: 'Pricing', href: '/pricing' },
+    { label: 'Open App', href: 'https://app.merrilyplan.com' },
+  ],
+  resources: [
+    { label: 'Blog', href: '/blog' },
+    { label: 'Wedding Checklist', href: '/blog/wedding-checklist-2025' },
+    { label: 'Budget Guide', href: '/blog/wedding-budget-guide-2025' },
+  ],
+  company: [
+    { label: 'Contact Us', href: '/contact' },
+    { label: 'Privacy Policy', href: '/privacy' },
+    { label: 'Terms of Service', href: '/terms' },
+  ],
+};
+---
+
+<footer class="bg-gray-900 text-gray-400">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      <!-- Brand -->
+      <div class="lg:col-span-1">
+        <a href="/" class="flex items-center gap-2 mb-4">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </div>
+          <span class="text-lg font-display font-bold text-white">Merrily Plan</span>
+        </a>
+        <p class="text-sm leading-relaxed max-w-xs">
+          The all-in-one wedding planning app that helps couples and planners organize every detail of the perfect day.
+        </p>
+      </div>
+
+      <!-- Product -->
+      <div>
+        <h4 class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Product</h4>
+        <ul class="space-y-3">
+          {footerLinks.product.map(({ label, href }) => (
+            <li>
+              <a href={href} class="text-sm hover:text-white transition-colors duration-200">
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div>
+        <h4 class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Resources</h4>
+        <ul class="space-y-3">
+          {footerLinks.resources.map(({ label, href }) => (
+            <li>
+              <a href={href} class="text-sm hover:text-white transition-colors duration-200">
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <h4 class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Company</h4>
+        <ul class="space-y-3">
+          {footerLinks.company.map(({ label, href }) => (
+            <li>
+              <a href={href} class="text-sm hover:text-white transition-colors duration-200">
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-sm">
+        &copy; {currentYear} Merrily Plan. All rights reserved.
+      </p>
+      <div class="flex items-center gap-6">
+        <a href="https://app.merrilyplan.com" class="text-sm hover:text-white transition-colors">
+          Open App
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

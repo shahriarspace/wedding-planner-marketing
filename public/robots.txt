@@ -1,0 +1,7 @@
+# Merrily Plan - Wedding Planning App
+# https://merrilyplan.com
+
+User-agent: *
+Allow: /
+
+Sitemap: https://merrilyplan.com/sitemap-index.xml
