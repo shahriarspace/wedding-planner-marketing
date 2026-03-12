@@ -4,7 +4,8 @@ import mdx from '@astrojs/mdx';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  site: 'https://merrilyplan.com',
+  site: 'https://minemeraj.github.io',
+  base: '/wedding-planner-marketing',
   integrations: [
     tailwind(),
     sitemap(),
