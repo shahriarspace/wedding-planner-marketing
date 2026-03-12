@@ -21,12 +21,12 @@ const footerLinks = {
 };
 ---
 
-<footer class="bg-gray-900 text-gray-400">
+<footer class="bg-gray-900 text-gray-400" role="contentinfo">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
       <!-- Brand -->
       <div class="lg:col-span-1">
-        <a href="/" class="flex items-center gap-2 mb-4">
+        <a href="/" class="flex items-center gap-2 mb-4" aria-label="Merrily Plan - Home">
           <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center">
             <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
@@ -40,7 +40,7 @@ const footerLinks = {
       </div>
 
       <!-- Product -->
-      <div>
+      <nav aria-label="Product links">
         <h4 class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Product</h4>
         <ul class="space-y-3">
           {footerLinks.product.map(({ label, href }) => (
@@ -51,10 +51,10 @@ const footerLinks = {
             </li>
           ))}
         </ul>
-      </div>
+      </nav>
 
       <!-- Resources -->
-      <div>
+      <nav aria-label="Resource links">
         <h4 class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Resources</h4>
         <ul class="space-y-3">
           {footerLinks.resources.map(({ label, href }) => (
@@ -65,10 +65,10 @@ const footerLinks = {
             </li>
           ))}
         </ul>
-      </div>
+      </nav>
 
       <!-- Company -->
-      <div>
+      <nav aria-label="Company links">
         <h4 class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Company</h4>
         <ul class="space-y-3">
           {footerLinks.company.map(({ label, href }) => (
@@ -79,7 +79,7 @@ const footerLinks = {
             </li>
           ))}
         </ul>
-      </div>
+      </nav>
     </div>
 
     <!-- Bottom bar -->

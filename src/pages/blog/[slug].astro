@@ -38,17 +38,61 @@ const jsonLd = {
   },
   ...(image && { image }),
 };
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://merrilyplan.com',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Blog',
+      item: 'https://merrilyplan.com/blog',
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: title,
+    },
+  ],
+};
 ---
 
 <BaseLayout title={title} description={description} jsonLd={jsonLd}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
   <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-    <!-- Back to blog -->
-    <a href="/blog" class="inline-flex items-center text-primary-600 hover:text-primary-700 mb-8 group">
-      <svg class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-      </svg>
-      Back to Blog
-    </a>
+    <!-- Breadcrumb navigation -->
+    <nav aria-label="Breadcrumb" class="mb-8">
+      <ol class="flex items-center text-sm text-gray-500 gap-2">
+        <li>
+          <a href="/" class="hover:text-primary-600 transition-colors">Home</a>
+        </li>
+        <li aria-hidden="true">
+          <svg class="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </li>
+        <li>
+          <a href="/blog" class="hover:text-primary-600 transition-colors">Blog</a>
+        </li>
+        <li aria-hidden="true">
+          <svg class="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </li>
+        <li>
+          <span class="text-gray-900 font-medium truncate max-w-[200px] inline-block" aria-current="page">{title}</span>
+        </li>
+      </ol>
+    </nav>
 
     <!-- Header -->
     <header class="mb-12">
