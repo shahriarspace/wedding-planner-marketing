@@ -2,6 +2,8 @@
   "nav": {
     "home": "\ud648",
     "pricing": "\uc694\uae08\uc81c",
+    "weddingChecklist": "\uccb4\ud06c\ub9ac\uc2a4\ud2b8",
+    "aiPlanner": "AI \ud50c\ub798\ub108",
     "blog": "\ube14\ub85c\uadf8",
     "contact": "\ubb38\uc758\ud558\uae30",
     "openApp": "\uc571 \uc5f4\uae30",
@@ -594,7 +596,8 @@
       "breadcrumbBlog": "\ube14\ub85c\uadf8",
       "ctaHeading": "\uaf3f\uc758 \uc6e8\ub529\uc744 \uacc4\ud68d\ud560 \uc900\ube44\uac00 \ub418\uc168\ub098\uc694?",
       "ctaText": "\ubaa8\ub4e0 \uc138\ubd80 \uc0ac\ud56d\uc744 \uc815\ub9ac\ud558\uae30 \uc704\ud574 Merrily Plan\uc744 \uc0ac\uc6a9\ud558\ub294 \uc218\ucc9c \ucee4\ud50c\uacfc \ud568\uaed8\ud558\uc138\uc694.",
-      "ctaButton": "\ubb34\ub8cc\ub85c \ud50c\ub798\ub2dd \uc2dc\uc791\ud558\uae30"
+      "ctaButton": "\ubb34\ub8cc\ub85c \ud50c\ub798\ub2dd \uc2dc\uc791\ud558\uae30",
+      "relatedHeading": "\uacc4\uc18d \uc77d\uae30"
     }
   }
 }

@@ -2,6 +2,8 @@
   "nav": {
     "home": "Home",
     "pricing": "Prezzi",
+    "weddingChecklist": "Checklist",
+    "aiPlanner": "IA Planner",
     "blog": "Blog",
     "contact": "Contatti",
     "openApp": "Apri App",
@@ -594,7 +596,8 @@
       "breadcrumbBlog": "Blog",
       "ctaHeading": "Pronto a iniziare a pianificare il matrimonio dei tuoi sogni?",
       "ctaText": "Unisciti a migliaia di coppie che usano Merrily Plan per organizzare ogni dettaglio.",
-      "ctaButton": "Inizia a Pianificare Gratis"
+      "ctaButton": "Inizia a Pianificare Gratis",
+      "relatedHeading": "Continua a Leggere"
     }
   }
 }

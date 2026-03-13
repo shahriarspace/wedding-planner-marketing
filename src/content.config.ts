@@ -7,6 +7,7 @@ const blog = defineCollection({
     title: z.string(),
     description: z.string(),
     date: z.string(),
+    dateModified: z.string().optional(),
     author: z.string().default('Merrily Plan Team'),
     image: z.string().optional(),
     tags: z.array(z.string()).default([]),

@@ -17,7 +17,7 @@ const locale = getLocaleFromUrl(Astro.url) as Locale;
 const { post } = Astro.props;
 const { Content } = await render(post);
 
-const { title, description, date, author, image, tags = [] } = post.data;
+const { title, description, date, dateModified, author, image, tags = [] } = post.data;
 
 // Map locale codes to BCP 47 locale strings for date formatting
 const dateLocaleMap: Record<string, string> = {
@@ -32,12 +32,25 @@ const formattedDate = new Date(date).toLocaleDateString(dateLocaleStr, {
   day: 'numeric',
 });
 
+// Related posts: find posts that share at least one tag (exclude current)
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const relatedPosts = allPosts
+  .filter((p) => p.id !== post.id)
+  .map((p) => ({
+    post: p,
+    sharedTags: p.data.tags?.filter((tag: string) => tags.includes(tag)).length || 0,
+  }))
+  .sort((a, b) => b.sharedTags - a.sharedTags || new Date(b.post.data.date).getTime() - new Date(a.post.data.date).getTime())
+  .slice(0, 3)
+  .map((r) => r.post);
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
   headline: title,
   description: description,
   datePublished: date,
+  ...(dateModified && { dateModified }),
   author: {
     '@type': 'Organization',
     name: author || 'Merrily Plan Team',
@@ -75,7 +88,7 @@ const breadcrumbSchema = {
 };
 ---
 
-<BaseLayout title={title} description={description} jsonLd={jsonLd}>
+<BaseLayout title={title} description={description} ogType="article" jsonLd={jsonLd}>
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   </Fragment>
@@ -154,5 +167,37 @@ const breadcrumbSchema = {
         {t(locale, 'blog.post.ctaButton')}
       </a>
     </div>
+
+    <!-- Related Posts -->
+    {relatedPosts.length > 0 && (
+      <section class="mt-16" aria-labelledby="related-heading">
+        <h2 id="related-heading" class="text-2xl font-display font-bold text-gray-900 mb-8">
+          {t(locale, 'blog.post.relatedHeading')}
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {relatedPosts.map((related) => (
+            <a href={localePath(locale, `/blog/${related.id}`)} class="group block">
+              <div class="card h-full flex flex-col group-hover:border-primary-200 transition-colors">
+                {related.data.tags && related.data.tags.length > 0 && (
+                  <div class="flex flex-wrap gap-1.5 mb-3">
+                    {related.data.tags.slice(0, 2).map((tag: string) => (
+                      <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-primary-100 text-primary-700">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+                <h3 class="text-lg font-display font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors leading-tight">
+                  {related.data.title}
+                </h3>
+                <p class="text-gray-600 text-sm leading-relaxed line-clamp-3 flex-1">
+                  {related.data.description}
+                </p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
   </article>
 </BaseLayout>

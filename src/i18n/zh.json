@@ -2,6 +2,8 @@
   "nav": {
     "home": "\u9996\u9875",
     "pricing": "\u4ef7\u683c",
+    "weddingChecklist": "\u6e05\u5355",
+    "aiPlanner": "AI\u89c4\u5212\u5e08",
     "blog": "\u535a\u5ba2",
     "contact": "\u8054\u7cfb\u6211\u4eec",
     "openApp": "\u6253\u5f00\u5e94\u7528",
@@ -594,7 +596,8 @@
       "breadcrumbBlog": "\u535a\u5ba2",
       "ctaHeading": "\u51c6\u5907\u597d\u5f00\u59cb\u7b56\u5212\u60a8\u7684\u68a6\u60f3\u5a5a\u793c\u4e86\u5417\uff1f",
       "ctaText": "\u52a0\u5165\u6570\u5343\u5bf9\u4f7f\u7528 Merrily Plan \u7ec4\u7ec7\u6bcf\u4e00\u4e2a\u7ec6\u8282\u7684\u65b0\u4eba\u3002",
-      "ctaButton": "\u514d\u8d39\u5f00\u59cb\u7b56\u5212"
+      "ctaButton": "\u514d\u8d39\u5f00\u59cb\u7b56\u5212",
+      "relatedHeading": "\u7ee7\u7eed\u9605\u8bfb"
     }
   }
 }

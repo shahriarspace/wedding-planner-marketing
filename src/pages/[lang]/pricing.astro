@@ -31,6 +31,19 @@ const pricingFaqs = [
   { q: t(locale, 'pricing.faq.q5'), a: t(locale, 'pricing.faq.a5') },
   { q: t(locale, 'pricing.faq.q6'), a: t(locale, 'pricing.faq.a6') },
 ];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: pricingFaqs.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: a,
+    },
+  })),
+};
 ---
 
 <BaseLayout
@@ -38,6 +51,9 @@ const pricingFaqs = [
   description={t(locale, 'pricing.meta.description')}
   jsonLd={jsonLd}
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
   <!-- Hero -->
   <section class="py-16 md:py-24 bg-gradient-to-br from-primary-50 via-white to-accent-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
